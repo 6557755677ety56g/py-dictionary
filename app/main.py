@@ -1,4 +1,5 @@
-from typing import Any, List, Optional, Tuple
+from typing import Any, List, Optional
+
 
 class Point:
     def __init__(self, x: int, y: int) -> None:
@@ -35,7 +36,11 @@ class Dictionary:
         while attempts < self.capacity:
             node = self.hash_table[idx]
             if node is None:
-                insert_idx = first_deleted_idx if first_deleted_idx is not None else idx
+                insert_idx = (
+                    first_deleted_idx
+                    if first_deleted_idx is not None
+                    else idx
+                )
                 self.hash_table[insert_idx] = (h, key, value)
                 self.length += 1
                 if self.length / self.capacity > self.load_factor:
